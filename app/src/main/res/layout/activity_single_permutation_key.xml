@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginLeft="10sp"
     android:layout_marginTop="10sp"
     android:layout_marginRight="10sp"
-    android:orientation="vertical"
-    tools:context=".CaesarActivity">
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textViewCaesar"
+        android:id="@+id/textViewSinPer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Шифр Цезаря"
+        android:text="Одиночная перестановка по ключу"
         android:gravity="center"
         android:textSize="20sp" />
 
@@ -23,14 +21,14 @@
         android:layout_height="25dp" />
 
     <TextView
-        android:id="@+id/textViewCaesarInput"
+        android:id="@+id/textViewSinPerInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Введите текст"
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/editTextCaesarForEncDec"
+        android:id="@+id/editTextSinPerForEncDec"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -50,7 +48,7 @@
             android:layout_weight="1" />
 
         <RadioButton
-            android:id="@+id/radioButtonEnc"
+            android:id="@+id/radioButtonSinPerEnc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Зашифровать" />
@@ -61,7 +59,7 @@
             android:layout_weight="1" />
 
         <RadioButton
-            android:id="@+id/radioButtonDec"
+            android:id="@+id/radioButtonSinPerDec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Дешифровать" />
@@ -74,29 +72,28 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/textViewCaesarKey"
+        android:id="@+id/textViewSinPerKey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Введите ключ:"
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/editTextCaesarKey"
+        android:id="@+id/editTextSinPerKey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number"
         android:minHeight="48dp" />
 
     <TextView
-        android:id="@+id/textViewCaesarResult"
+        android:id="@+id/textViewSinPerResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Результат"
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/editTextCaesarResult"
+        android:id="@+id/editSinPerResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -109,12 +106,11 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/btnCaesarGetResult"
+            android:id="@+id/btnSinPerGetResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Получить результат"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="0dp" />
+            app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

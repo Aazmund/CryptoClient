@@ -1,7 +1,6 @@
 package com.example.crypto;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 public class CryptoActivity extends AppCompatActivity {

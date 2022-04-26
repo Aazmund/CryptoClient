@@ -34,15 +34,24 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
                 switch (((TextView) itemClicked).getText().toString()){
                     case "Шифр Цезаря":
-                        Intent intent = new Intent(MainActivity.this, CaesarActivity.class);
-                        intent.putExtra("cryptName", "Caesar");
-                        startActivity(intent);
+                        Intent intentCaesar = new Intent(MainActivity.this, CaesarActivity.class);
+                        intentCaesar.putExtra("cryptName", "Caesar");
+                        startActivity(intentCaesar);
                         break;
                     case "Одиночная перестановка по ключу":
+                        Intent intentSinPer = new Intent(MainActivity.this, SinglePermutationKey.class);
+                        intentSinPer.putExtra("cryptName", "SinglePermutationKey");
+                        startActivity(intentSinPer);
                         break;
                     case "Аффинный шифр":
+                        Intent intentAffine = new Intent(MainActivity.this, AffineActivity.class);
+                        intentAffine.putExtra("cryptName", "Affine");
+                        startActivity(intentAffine);
                         break;
                     case "Цезарь с ключевым словом":
+                        Intent intentCaesarKey = new Intent(MainActivity.this, CaesarKeyWordActivity.class);
+                        intentCaesarKey.putExtra("cryptName", "CaesarKeyWord");
+                        startActivity(intentCaesarKey);
                         break;
                     case "Двойная перестановка":
                         break;
@@ -68,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case "Кастомный шифр":
                         break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + ((TextView) itemClicked).getText().toString());
                 }
             }
         });

@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_affine.xml" value="0.38958333333333334" />
         <entry key="app/src/main/res/layout/activity_caesar.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/activity_caesar_key_word.xml" value="0.38958333333333334" />
         <entry key="app/src/main/res/layout/activity_crypto.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_single_permutation_key.xml" value="0.2959439751897752" />
       </map>
     </option>
   </component>

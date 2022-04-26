@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.crypto">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,9 +11,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Crypto"
+        android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity
+            android:name=".CaesarKeyWordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AffineActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SinglePermutationKey"
+            android:exported="false" />
         <activity
             android:name=".CaesarActivity"
             android:exported="false" />
