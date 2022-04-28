@@ -9,7 +9,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.crypto.CryptActivities.AffineActivity;
+import com.example.crypto.CryptActivities.CaesarActivity;
+import com.example.crypto.CryptActivities.CaesarKeyWordActivity;
+import com.example.crypto.CryptActivities.DoublePermutationActivity;
+import com.example.crypto.CryptActivities.SinglePermutationKey;
+import com.example.crypto.CryptActivities.TrithemiusActivity;
+import com.example.crypto.CryptActivities.VigenereActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.listView);
         String[] cryptoList = new String[]{
                 "Шифр Цезаря", "Одиночная перестановка по ключу", "Аффинный шифр", "Цезарь с ключевым словом",
-                "Двойная перестановка", "Шифр тритемиуса", "Магический квадрат", "Шифр Вижнера",
+                "Двойная перестановка", "Шифр Тритемиуса", "Магический квадрат", "Шифр Вижнера",
                 "Шифр Гронсфельда", "Шифр Плейфера", "Шифр Хилла", "Маршрутный шифр",
                 "Поворотная решетка Кардано", "Шифр Решелье", "Шифр Фейстеля", "Кастомный шифр"
         };
@@ -54,12 +61,21 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intentCaesarKey);
                         break;
                     case "Двойная перестановка":
+                        Intent intentDoublePer = new Intent(MainActivity.this, DoublePermutationActivity.class);
+                        intentDoublePer.putExtra("cryptName", "DoublePermutation");
+                        startActivity(intentDoublePer);
                         break;
-                    case "Шифр тритемиуса":
+                    case "Шифр Тритемиуса":
+                        Intent intentTrithemius = new Intent(MainActivity.this, TrithemiusActivity.class);
+                        intentTrithemius.putExtra("cryptName", "Trithemius");
+                        startActivity(intentTrithemius);
                         break;
                     case "Магический квадрат":
                         break;
                     case "Шифр Вижнера":
+                        Intent intentVigenere = new Intent(MainActivity.this, VigenereActivity.class);
+                        intentVigenere.putExtra("cryptName", "Trithemius");
+                        startActivity(intentVigenere);
                         break;
                     case "Шифр Гронсфельда":
                         break;

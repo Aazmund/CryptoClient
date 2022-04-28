@@ -1,4 +1,4 @@
-package com.example.crypto;
+package com.example.crypto.CryptActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.crypto.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,28 +20,25 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CaesarKeyWordActivity extends AppCompatActivity {
+public class TrithemiusActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_caesar_key_word);
+        setContentView(R.layout.activity_trithemius);
 
         Bundle bundle = getIntent().getExtras();
         String cryptName = bundle.getString("cryptName");
 
-        Button btnGetResult = findViewById(R.id.btnCaesarKeyWordGetResult);
+        Button btnGetResult = findViewById(R.id.btnTrithemiusGetResult);
 
-        EditText editTextCaesarKeyWordForEncDec = findViewById(R.id.editTextCaesarKeyWordForEncDec);
-        EditText editTextCaesarKeyWordKey1 = findViewById(R.id.editTextCaesarKeyWordKey1);
-        EditText editTextCaesarKeyWordKey2 = findViewById(R.id.editTextCaesarKeyWordKey2);
+        EditText editTextTrithemiusForEncDec = findViewById(R.id.editTextTrithemiusForEncDec);
 
         RadioButton radioButtonEnc = findViewById(R.id.radioButtonEnc);
         RadioButton radioButtonDec = findViewById(R.id.radioButtonDec);
 
         btnGetResult.setOnClickListener(view -> {
-            if (editTextCaesarKeyWordForEncDec.getText().toString().equals("") ||
-                    editTextCaesarKeyWordKey1.getText().toString().equals("") || editTextCaesarKeyWordKey2.getText().toString().equals("") ||
+            if (editTextTrithemiusForEncDec.getText().toString().equals("") ||
                     (!radioButtonEnc.isChecked() && !radioButtonDec.isChecked())){
                 Toast.makeText(this, "Есть незаполненые поля", Toast.LENGTH_SHORT).show();
             }else{
@@ -50,8 +48,7 @@ public class CaesarKeyWordActivity extends AppCompatActivity {
                 }else{
                     action = "decrypt";
                 }
-                String context = editTextCaesarKeyWordKey1.getText().toString() + "@" + editTextCaesarKeyWordKey2.getText().toString();
-                requestToServer(action, editTextCaesarKeyWordForEncDec.getText().toString(), cryptName, context);
+                requestToServer(action, editTextTrithemiusForEncDec.getText().toString(), cryptName, "null");
             }
         });
     }
@@ -63,12 +60,12 @@ public class CaesarKeyWordActivity extends AppCompatActivity {
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 System.out.println(jsonObject);
-                EditText editTextCaesarKeyWordResult = findViewById(R.id.editTextCaesarKeyWordResult);
-                editTextCaesarKeyWordResult.setText(jsonObject.getString("string"));
+                EditText editTextTrithemiusResult = findViewById(R.id.editTextTrithemiusResult);
+                editTextTrithemiusResult.setText(jsonObject.getString("string"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }, error -> Toast.makeText(CaesarKeyWordActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
+        }, error -> Toast.makeText(TrithemiusActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
@@ -82,4 +79,5 @@ public class CaesarKeyWordActivity extends AppCompatActivity {
         };
         queue.add(request);
     }
+    
 }

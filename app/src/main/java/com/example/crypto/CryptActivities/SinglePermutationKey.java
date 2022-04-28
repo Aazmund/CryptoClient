@@ -1,4 +1,4 @@
-package com.example.crypto;
+package com.example.crypto.CryptActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.crypto.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,27 +20,28 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CaesarActivity extends AppCompatActivity {
+public class SinglePermutationKey extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_caesar);
+        setContentView(R.layout.activity_single_permutation_key);
+
         Bundle bundle = getIntent().getExtras();
         String cryptName = bundle.getString("cryptName");
 
-        Button btnGetResult = findViewById(R.id.btnCaesarGetResult);
+        Button btnGetResult = findViewById(R.id.btnSinPerGetResult);
 
-        EditText editTextCaesarForEncDec = findViewById(R.id.editTextCaesarForEncDec);
-        EditText editTextCaesarKey = findViewById(R.id.editTextCaesarKey);
+        EditText editTextSinPerForEncDec = findViewById(R.id.editTextSinPerForEncDec);
+        EditText editTextSinPerKey = findViewById(R.id.editTextSinPerKey);
 
-        RadioButton radioButtonEnc = findViewById(R.id.radioButtonEnc);
-        RadioButton radioButtonDec = findViewById(R.id.radioButtonDec);
+        RadioButton radioButtonEnc = findViewById(R.id.radioButtonSinPerEnc);
+        RadioButton radioButtonDec = findViewById(R.id.radioButtonSinPerDec);
 
         btnGetResult.setOnClickListener(view -> {
-            if (editTextCaesarForEncDec.getText().toString().equals("") ||
-                    editTextCaesarKey.getText().toString().equals("") ||
-                    (!radioButtonEnc.isChecked() && !radioButtonDec.isChecked())){
+            if(editTextSinPerForEncDec.getText().toString().equals("") ||
+                editTextSinPerKey.getText().toString().equals("") ||
+                (!radioButtonEnc.isChecked() && !radioButtonDec.isChecked())) {
                 Toast.makeText(this, "Есть незаполненые поля", Toast.LENGTH_SHORT).show();
             }else{
                 String action;
@@ -48,7 +50,7 @@ public class CaesarActivity extends AppCompatActivity {
                 }else{
                     action = "decrypt";
                 }
-                requestToServer(action, editTextCaesarForEncDec.getText().toString(), cryptName, editTextCaesarKey.getText().toString());
+                requestToServer(action, editTextSinPerForEncDec.getText().toString(), cryptName, editTextSinPerKey.getText().toString());
             }
         });
     }
@@ -60,12 +62,12 @@ public class CaesarActivity extends AppCompatActivity {
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 System.out.println(jsonObject);
-                EditText editTextCaesarResult = findViewById(R.id.editTextCaesarResult);
-                editTextCaesarResult.setText(jsonObject.getString("string"));
+                EditText editTextSinPerResult = findViewById(R.id.editSinPerResult);
+                editTextSinPerResult.setText(jsonObject.getString("string"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }, error -> Toast.makeText(CaesarActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
+        }, error -> Toast.makeText(SinglePermutationKey.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
@@ -79,4 +81,5 @@ public class CaesarActivity extends AppCompatActivity {
         };
         queue.add(request);
     }
+
 }

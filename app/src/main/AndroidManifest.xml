@@ -15,16 +15,25 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
-            android:name=".CaesarKeyWordActivity"
+            android:name=".CryptActivities.VigenereActivity"
             android:exported="false" />
         <activity
-            android:name=".AffineActivity"
+            android:name=".CryptActivities.TrithemiusActivity"
             android:exported="false" />
         <activity
-            android:name=".SinglePermutationKey"
+            android:name=".CryptActivities.DoublePermutationActivity"
             android:exported="false" />
         <activity
-            android:name=".CaesarActivity"
+            android:name=".CryptActivities.CaesarKeyWordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CryptActivities.AffineActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CryptActivities.SinglePermutationKey"
+            android:exported="false" />
+        <activity
+            android:name=".CryptActivities.CaesarActivity"
             android:exported="false" />
         <activity
             android:name=".CryptoActivity"

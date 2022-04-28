@@ -1,4 +1,4 @@
-package com.example.crypto;
+package com.example.crypto.CryptActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.crypto.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,28 +20,29 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SinglePermutationKey extends AppCompatActivity {
+public class AffineActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_permutation_key);
+        setContentView(R.layout.activity_affine);
 
         Bundle bundle = getIntent().getExtras();
         String cryptName = bundle.getString("cryptName");
 
-        Button btnGetResult = findViewById(R.id.btnCaesarGetResult);
+        Button btnGetResult = findViewById(R.id.btnAffineGetResult);
 
-        EditText editTextSinPerForEncDec = findViewById(R.id.editTextSinPerForEncDec);
-        EditText editTextSinPerKey = findViewById(R.id.editTextSinPerKey);
+        EditText editTextAffineForEncDec = findViewById(R.id.editTextAffineForEncDec);
+        EditText editTextAffineKey1 = findViewById(R.id.editTextAffineKey1);
+        EditText editTextAffineKey2 = findViewById(R.id.editTextAffineKey2);
 
-        RadioButton radioButtonEnc = findViewById(R.id.radioButtonSinPerEnc);
-        RadioButton radioButtonDec = findViewById(R.id.radioButtonSinPerDec);
+        RadioButton radioButtonEnc = findViewById(R.id.radioButtonEnc);
+        RadioButton radioButtonDec = findViewById(R.id.radioButtonDec);
 
         btnGetResult.setOnClickListener(view -> {
-            if(editTextSinPerForEncDec.getText().toString().equals("") ||
-                editTextSinPerKey.getText().toString().equals("") ||
-                (!radioButtonEnc.isChecked() && !radioButtonDec.isChecked())) {
+            if (editTextAffineForEncDec.getText().toString().equals("") ||
+                    editTextAffineKey1.getText().toString().equals("") || editTextAffineKey2.getText().toString().equals("") ||
+                    (!radioButtonEnc.isChecked() && !radioButtonDec.isChecked())){
                 Toast.makeText(this, "Есть незаполненые поля", Toast.LENGTH_SHORT).show();
             }else{
                 String action;
@@ -49,11 +51,12 @@ public class SinglePermutationKey extends AppCompatActivity {
                 }else{
                     action = "decrypt";
                 }
-                requestToServer(action, editTextSinPerForEncDec.getText().toString(), cryptName, editTextSinPerKey.getText().toString());
+                String context = editTextAffineKey1.getText().toString() + "@" + editTextAffineKey2.getText().toString();
+                requestToServer(action, editTextAffineForEncDec.getText().toString(), cryptName, context);
             }
         });
     }
-
+    
     private void requestToServer(String action, String string, String cryptName, String context) {
         String url = "http://10.0.2.2:8080/crypto";
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -61,12 +64,12 @@ public class SinglePermutationKey extends AppCompatActivity {
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 System.out.println(jsonObject);
-                EditText editTextCaesarResult = findViewById(R.id.editSinPerResult);
-                editTextCaesarResult.setText(jsonObject.getString("string"));
+                EditText editTextAffineResult = findViewById(R.id.editTextAffineResult);
+                editTextAffineResult.setText(jsonObject.getString("string"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }, error -> Toast.makeText(SinglePermutationKey.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
+        }, error -> Toast.makeText(AffineActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
@@ -80,5 +83,4 @@ public class SinglePermutationKey extends AppCompatActivity {
         };
         queue.add(request);
     }
-
 }
