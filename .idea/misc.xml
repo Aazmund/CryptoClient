@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/layout/activity_caesar_key_word.xml" value="0.38958333333333334" />
         <entry key="app/src/main/res/layout/activity_crypto.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_double_permutation.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/activity_magic_square.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_single_permutation_key.xml" value="0.2959439751897752" />
         <entry key="app/src/main/res/layout/activity_trithemius.xml" value="0.4036458333333333" />
@@ -20,5 +21,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.4036458333333333" />
+      </ProjectState>
+    </option>
   </component>
 </project>

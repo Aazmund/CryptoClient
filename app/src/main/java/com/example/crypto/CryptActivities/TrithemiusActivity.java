@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.crypto.R;
@@ -37,8 +38,15 @@ public class TrithemiusActivity extends AppCompatActivity {
         RadioButton radioButtonEnc = findViewById(R.id.radioButtonEnc);
         RadioButton radioButtonDec = findViewById(R.id.radioButtonDec);
 
+        EditText editTextTrithemiusKey1 = findViewById(R.id.editTextTrithemiusKey1);
+        EditText editTextTrithemiusKey2 = findViewById(R.id.editTextTrithemiusKey2);
+        EditText editTextTrithemiusKey3 = findViewById(R.id.editTextTrithemiusKey3);
+
         btnGetResult.setOnClickListener(view -> {
             if (editTextTrithemiusForEncDec.getText().toString().equals("") ||
+                    editTextTrithemiusKey1.toString().isEmpty() ||
+                    editTextTrithemiusKey2.toString().isEmpty() ||
+                    editTextTrithemiusKey3.toString().isEmpty() ||
                     (!radioButtonEnc.isChecked() && !radioButtonDec.isChecked())){
                 Toast.makeText(this, "Есть незаполненые поля", Toast.LENGTH_SHORT).show();
             }else{
@@ -48,7 +56,10 @@ public class TrithemiusActivity extends AppCompatActivity {
                 }else{
                     action = "decrypt";
                 }
-                requestToServer(action, editTextTrithemiusForEncDec.getText().toString(), cryptName, "null");
+                requestToServer(action, editTextTrithemiusForEncDec.getText().toString(), cryptName,
+                        editTextTrithemiusKey1.getText().toString() + "@"
+                                + editTextTrithemiusKey2.getText().toString() + "@"
+                                + editTextTrithemiusKey3.getText().toString());
             }
         });
     }
@@ -56,28 +67,41 @@ public class TrithemiusActivity extends AppCompatActivity {
     private void requestToServer(String action, String string, String cryptName, String context) {
         String url = "http://10.0.2.2:8080/crypto";
         RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
+
+        Map<String, String> params = new HashMap<>();
+        params.put("action", action);
+        params.put("string", string);
+        params.put("cryptName", cryptName);
+        params.put("context", context);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+                url, new JSONObject(params), response -> {
             try {
-                JSONObject jsonObject = new JSONObject(response);
-                System.out.println(jsonObject);
                 EditText editTextTrithemiusResult = findViewById(R.id.editTextTrithemiusResult);
-                editTextTrithemiusResult.setText(jsonObject.getString("string"));
+                editTextTrithemiusResult.setText(response.getString("result"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }, error -> Toast.makeText(TrithemiusActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
             @Override
-            protected Map<String, String> getParams() {
+            public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("action", action);
                 params.put("string", string);
                 params.put("cryptName", cryptName);
                 params.put("context", context);
+                params.put("result", "");
 
                 return params;
             }
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/json");
+                return params;
+            }
         };
-        queue.add(request);
+        queue.add(jsonObjectRequest);
     }
     
 }

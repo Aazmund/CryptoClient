@@ -10,10 +10,10 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textViewTrithemius"
+        android:id="@+id/textViewMagicSquare"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Шифр Тритемиуса"
+        android:text="Магический квадрат"
         android:gravity="center"
         android:textSize="20sp" />
 
@@ -22,21 +22,11 @@
         android:layout_height="25dp" />
 
     <TextView
-        android:id="@+id/textViewTrithemiusInput"
+        android:id="@+id/textViewVigenereInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Введите текст"
+        android:text="Выберите размер квадрата"
         android:textSize="20sp" />
-
-    <EditText
-        android:id="@+id/editTextTrithemiusForEncDec"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Текст для шифровки/дешифровки"
-        android:inputType="textMultiLine"
-        android:minHeight="48dp" />
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -49,10 +39,10 @@
             android:layout_weight="1" />
 
         <RadioButton
-            android:id="@+id/radioButtonEnc"
+            android:id="@+id/radioButtonThree"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Зашифровать" />
+            android:text="3" />
 
         <Space
             android:layout_width="wrap_content"
@@ -60,10 +50,21 @@
             android:layout_weight="1" />
 
         <RadioButton
-            android:id="@+id/radioButtonDec"
+            android:id="@+id/radioButtonFive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Дешифровать" />
+            android:text="5" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/radioButtonSeven"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7" />
 
         <Space
             android:layout_width="wrap_content"
@@ -72,67 +73,32 @@
 
     </RadioGroup>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <EditText
-            android:id="@+id/editTextTrithemiusKey1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Ключ 1"
-            android:inputType="number" />
-
-        <EditText
-            android:id="@+id/editTextTrithemiusKey2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Ключ 2"
-            android:inputType="number" />
-
-        <EditText
-            android:id="@+id/editTextTrithemiusKey3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Ключ 3"
-            android:inputType="number" />
-    </LinearLayout>
-
     <TextView
-        android:id="@+id/textViewTrithemiusResult"
+        android:id="@+id/textViewMagicSquareResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Результат"
+        android:text="Сгенерированный квадрат"
         android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/editTextTrithemiusResult"
+    <androidx.gridlayout.widget.GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:minHeight="48dp" />
+        android:id="@+id/GridMagickSquare">
+
+    </androidx.gridlayout.widget.GridLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/btnTrithemiusGetResult"
+            android:id="@+id/btnMagicSquareGetResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Получить результат"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="0dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

@@ -15,6 +15,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".CryptActivities.MagicSquareActivity"
+            android:exported="false" />
+        <activity
             android:name=".CryptActivities.VigenereActivity"
             android:exported="false" />
         <activity
