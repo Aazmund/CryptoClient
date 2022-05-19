@@ -15,7 +15,16 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".CryptActivities.AuthorialActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CryptActivities.CardanGrilleActivity"
+            android:exported="false" />
+        <activity
             android:name=".CryptActivities.RichelieuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CryptActivities.RoutActivity"
             android:exported="false" />
         <activity
             android:name=".CryptActivities.HillActivity"

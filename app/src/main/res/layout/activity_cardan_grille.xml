@@ -8,13 +8,13 @@
     android:layout_marginTop="10sp"
     android:layout_marginRight="10sp"
     android:orientation="vertical"
-    tools:context=".CryptActivities.VigenereActivity">
+    tools:context=".CryptActivities.CardanGrilleActivity">
 
     <TextView
-        android:id="@+id/textViewVigenere"
+        android:id="@+id/textViewCardanGrille"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Шифр Виженера"
+        android:text="Решетка Кардано"
         android:gravity="center"
         android:textSize="20sp" />
 
@@ -23,14 +23,14 @@
         android:layout_height="25dp" />
 
     <TextView
-        android:id="@+id/textViewVigenereInput"
+        android:id="@+id/textViewCardanGrilleInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Введите текст"
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/editTextVigenereForEncDec"
+        android:id="@+id/editTextCardanGrilleForEncDec"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -50,7 +50,7 @@
             android:layout_weight="1" />
 
         <RadioButton
-            android:id="@+id/radioButtonEnc"
+            android:id="@+id/radioButtonCardanGrilleEnc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Зашифровать" />
@@ -61,7 +61,7 @@
             android:layout_weight="1" />
 
         <RadioButton
-            android:id="@+id/radioButtonDec"
+            android:id="@+id/radioButtonCardanGrilleDec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Дешифровать" />
@@ -74,28 +74,14 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/textViewVigenereKey"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Введите ключ:"
-        android:textSize="20sp" />
-
-    <EditText
-        android:id="@+id/editTextVigenereKey"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:minHeight="48dp" />
-
-    <TextView
-        android:id="@+id/textViewVigenereResult"
+        android:id="@+id/textViewCardanGrilleResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Результат"
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/editTextVigenereResult"
+        android:id="@+id/editTextCardanGrilleResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -108,7 +94,7 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/btnVigenereGetResult"
+            android:id="@+id/btnCardanGrilleGetResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Получить результат"

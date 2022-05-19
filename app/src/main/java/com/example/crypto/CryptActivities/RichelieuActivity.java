@@ -2,17 +2,17 @@ package com.example.crypto.CryptActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.crypto.R;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,13 +32,15 @@ public class RichelieuActivity extends AppCompatActivity {
 
         Button btnGetResult = findViewById(R.id.btnRichelieuGetResult);
 
-        EditText editTextRichelieuEncDec = findViewById(R.id.editTextRichelieuForEncDec);
+        EditText editTextRichelieuForEncDec = findViewById(R.id.editTextRichelieuForEncDec);
+        EditText editTextRichelieuKey = findViewById(R.id.editTextRichelieuKey);
 
         RadioButton radioButtonEnc = findViewById(R.id.radioButtonRichelieuEnc);
         RadioButton radioButtonDec = findViewById(R.id.radioButtonRichelieuDec);
 
         btnGetResult.setOnClickListener(view -> {
-            if (editTextRichelieuEncDec.getText().toString().equals("") ||
+            if (editTextRichelieuForEncDec.getText().toString().equals("") ||
+                    editTextRichelieuKey.getText().toString().equals("")  ||
                     (!radioButtonEnc.isChecked() && !radioButtonDec.isChecked())){
                 Toast.makeText(this, "Есть незаполненые поля", Toast.LENGTH_SHORT).show();
             }else{
@@ -48,8 +50,9 @@ public class RichelieuActivity extends AppCompatActivity {
                 }else{
                     action = "decrypt";
                 }
-                String context = "empty";
-                requestToServer(action, editTextRichelieuEncDec.getText().toString(), cryptName, context);
+                String context = editTextRichelieuKey.getText().toString();
+                System.out.println(action + "  " + editTextRichelieuForEncDec.getText().toString() + "  " + cryptName + "  " + context);
+                requestToServer(action, editTextRichelieuForEncDec.getText().toString(), cryptName, context);
             }
         });
     }

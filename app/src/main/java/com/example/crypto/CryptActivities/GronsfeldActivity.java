@@ -32,14 +32,14 @@ public class GronsfeldActivity extends AppCompatActivity {
 
         Button btnGetResult = findViewById(R.id.btnGronsfeldGetResult);
 
-        EditText editTextCGronsfeldForEncDec = findViewById(R.id.editTextGronsfeldForEncDec);
+        EditText editTextGronsfeldForEncDec = findViewById(R.id.editTextGronsfeldForEncDec);
         EditText editTextGronsfeldKey = findViewById(R.id.editTextGronsfeldKey);
 
         RadioButton radioButtonEnc = findViewById(R.id.radioButtonGronsfeldEnc);
         RadioButton radioButtonDec = findViewById(R.id.radioButtonGronsfeldDec);
 
         btnGetResult.setOnClickListener(view -> {
-            if (editTextCGronsfeldForEncDec.getText().toString().equals("") ||
+            if (editTextGronsfeldForEncDec.getText().toString().equals("") ||
                     editTextGronsfeldKey.getText().toString().equals("")  ||
                     (!radioButtonEnc.isChecked() && !radioButtonDec.isChecked())){
                 Toast.makeText(this, "Есть незаполненые поля", Toast.LENGTH_SHORT).show();
@@ -51,7 +51,7 @@ public class GronsfeldActivity extends AppCompatActivity {
                     action = "decrypt";
                 }
                 String context = editTextGronsfeldKey.getText().toString();
-                requestToServer(action, editTextCGronsfeldForEncDec.getText().toString(), cryptName, context);
+                requestToServer(action, editTextGronsfeldForEncDec.getText().toString(), cryptName, context);
             }
         });
     }

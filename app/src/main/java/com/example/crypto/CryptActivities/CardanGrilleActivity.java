@@ -2,17 +2,17 @@ package com.example.crypto.CryptActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.crypto.R;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,28 +20,26 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AffineActivity extends AppCompatActivity {
+public class CardanGrilleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_affine);
+        setContentView(R.layout.activity_cardan_grille);
 
         Bundle bundle = getIntent().getExtras();
         String cryptName = bundle.getString("cryptName");
 
-        Button btnGetResult = findViewById(R.id.btnAffineGetResult);
 
-        EditText editTextAffineForEncDec = findViewById(R.id.editTextAffineForEncDec);
-        EditText editTextAffineKey1 = findViewById(R.id.editTextAffineKey1);
-        EditText editTextAffineKey2 = findViewById(R.id.editTextAffineKey2);
+        Button btnGetResult = findViewById(R.id.btnCardanGrilleGetResult);
 
-        RadioButton radioButtonEnc = findViewById(R.id.radioButtonEnc);
-        RadioButton radioButtonDec = findViewById(R.id.radioButtonDec);
+        EditText editTextCardanGrilleEncDec = findViewById(R.id.editTextCardanGrilleForEncDec);
+
+        RadioButton radioButtonEnc = findViewById(R.id.radioButtonCardanGrilleEnc);
+        RadioButton radioButtonDec = findViewById(R.id.radioButtonCardanGrilleDec);
 
         btnGetResult.setOnClickListener(view -> {
-            if (editTextAffineForEncDec.getText().toString().equals("") ||
-                    editTextAffineKey1.getText().toString().equals("") || editTextAffineKey2.getText().toString().equals("") ||
+            if (editTextCardanGrilleEncDec.getText().toString().equals("") ||
                     (!radioButtonEnc.isChecked() && !radioButtonDec.isChecked())){
                 Toast.makeText(this, "Есть незаполненые поля", Toast.LENGTH_SHORT).show();
             }else{
@@ -51,12 +49,13 @@ public class AffineActivity extends AppCompatActivity {
                 }else{
                     action = "decrypt";
                 }
-                String context = editTextAffineKey1.getText().toString() + "@" + editTextAffineKey2.getText().toString();
-                requestToServer(action, editTextAffineForEncDec.getText().toString(), cryptName, context);
+                String context = "empty";
+                System.out.println(action + "  " + editTextCardanGrilleEncDec.getText().toString() + "  " + cryptName + "  " + context);
+                requestToServer(action, editTextCardanGrilleEncDec.getText().toString(), cryptName, context);
             }
         });
     }
-    
+
     private void requestToServer(String action, String string, String cryptName, String context) {
         String url = "http://10.0.2.2:8080/crypto";
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -70,12 +69,12 @@ public class AffineActivity extends AppCompatActivity {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                 url, new JSONObject(params), response -> {
             try {
-                EditText editTextAffineResult = findViewById(R.id.editTextAffineResult);
-                editTextAffineResult.setText(response.getString("result"));
+                EditText editTextCardanGrilleResult = findViewById(R.id.editTextCardanGrilleResult);
+                editTextCardanGrilleResult.setText(response.getString("result"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }, error -> Toast.makeText(AffineActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
+        }, error -> Toast.makeText(CardanGrilleActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
             @Override
             public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();

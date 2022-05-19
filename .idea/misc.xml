@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_affine.xml" value="0.38958333333333334" />
+        <entry key="app/src/main/res/layout/activity_authorial.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_caesar.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_caesar_key_word.xml" value="0.38958333333333334" />
+        <entry key="app/src/main/res/layout/activity_cardan_grille.xml" value="0.17037037037037037" />
         <entry key="app/src/main/res/layout/activity_crypto.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_double_permutation.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_gronsfeld.xml" value="0.26666666666666666" />
@@ -13,10 +15,11 @@
         <entry key="app/src/main/res/layout/activity_magic_square.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_playfair.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_richelieu.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/activity_richelieu.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_rout.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_single_permutation_key.xml" value="0.2959439751897752" />
         <entry key="app/src/main/res/layout/activity_trithemius.xml" value="0.4036458333333333" />
-        <entry key="app/src/main/res/layout/activity_vigenere.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/activity_vigenere.xml" value="0.24096385542168675" />
       </map>
     </option>
   </component>

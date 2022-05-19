@@ -20,28 +20,26 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AffineActivity extends AppCompatActivity {
+public class AuthorialActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_affine);
+        setContentView(R.layout.activity_authorial);
 
-        Bundle bundle = getIntent().getExtras();
-        String cryptName = bundle.getString("cryptName");
+        String cryptName = "authorial";
 
-        Button btnGetResult = findViewById(R.id.btnAffineGetResult);
+        Button btnGetResult = findViewById(R.id.btnAuthorialGetResult);
 
-        EditText editTextAffineForEncDec = findViewById(R.id.editTextAffineForEncDec);
-        EditText editTextAffineKey1 = findViewById(R.id.editTextAffineKey1);
-        EditText editTextAffineKey2 = findViewById(R.id.editTextAffineKey2);
+        EditText editTextAuthorialForEncDec = findViewById(R.id.editTextAuthorialForEncDec);
+        EditText editTextAuthorialKey = findViewById(R.id.editTextAuthorialKey);
 
-        RadioButton radioButtonEnc = findViewById(R.id.radioButtonEnc);
-        RadioButton radioButtonDec = findViewById(R.id.radioButtonDec);
+        RadioButton radioButtonEnc = findViewById(R.id.radioButtonAuthorialEnc);
+        RadioButton radioButtonDec = findViewById(R.id.radioButtonAuthorialDec);
 
         btnGetResult.setOnClickListener(view -> {
-            if (editTextAffineForEncDec.getText().toString().equals("") ||
-                    editTextAffineKey1.getText().toString().equals("") || editTextAffineKey2.getText().toString().equals("") ||
+            if (editTextAuthorialForEncDec.getText().toString().equals("") ||
+                    editTextAuthorialKey.getText().toString().equals("")  ||
                     (!radioButtonEnc.isChecked() && !radioButtonDec.isChecked())){
                 Toast.makeText(this, "Есть незаполненые поля", Toast.LENGTH_SHORT).show();
             }else{
@@ -51,12 +49,12 @@ public class AffineActivity extends AppCompatActivity {
                 }else{
                     action = "decrypt";
                 }
-                String context = editTextAffineKey1.getText().toString() + "@" + editTextAffineKey2.getText().toString();
-                requestToServer(action, editTextAffineForEncDec.getText().toString(), cryptName, context);
+                String context = editTextAuthorialKey.getText().toString();
+                requestToServer(action, editTextAuthorialForEncDec.getText().toString(), cryptName, context);
             }
         });
     }
-    
+
     private void requestToServer(String action, String string, String cryptName, String context) {
         String url = "http://10.0.2.2:8080/crypto";
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -70,12 +68,12 @@ public class AffineActivity extends AppCompatActivity {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                 url, new JSONObject(params), response -> {
             try {
-                EditText editTextAffineResult = findViewById(R.id.editTextAffineResult);
-                editTextAffineResult.setText(response.getString("result"));
+                EditText editTextAuthorialResult = findViewById(R.id.editTextAuthorialResult);
+                editTextAuthorialResult.setText(response.getString("result"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }, error -> Toast.makeText(AffineActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
+        }, error -> Toast.makeText(AuthorialActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
             @Override
             public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();

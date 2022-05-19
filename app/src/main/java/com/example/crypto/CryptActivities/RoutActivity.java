@@ -1,7 +1,6 @@
 package com.example.crypto.CryptActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,28 +19,25 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AffineActivity extends AppCompatActivity {
+public class RoutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_affine);
+        setContentView(R.layout.activity_rout);
 
         Bundle bundle = getIntent().getExtras();
         String cryptName = bundle.getString("cryptName");
 
-        Button btnGetResult = findViewById(R.id.btnAffineGetResult);
+        Button btnGetResult = findViewById(R.id.btnRoutGetResult);
 
-        EditText editTextAffineForEncDec = findViewById(R.id.editTextAffineForEncDec);
-        EditText editTextAffineKey1 = findViewById(R.id.editTextAffineKey1);
-        EditText editTextAffineKey2 = findViewById(R.id.editTextAffineKey2);
+        EditText editTextRoutEncDec = findViewById(R.id.editTextRoutForEncDec);
 
-        RadioButton radioButtonEnc = findViewById(R.id.radioButtonEnc);
-        RadioButton radioButtonDec = findViewById(R.id.radioButtonDec);
+        RadioButton radioButtonEnc = findViewById(R.id.radioButtonRoutEnc);
+        RadioButton radioButtonDec = findViewById(R.id.radioButtonRoutDec);
 
         btnGetResult.setOnClickListener(view -> {
-            if (editTextAffineForEncDec.getText().toString().equals("") ||
-                    editTextAffineKey1.getText().toString().equals("") || editTextAffineKey2.getText().toString().equals("") ||
+            if (editTextRoutEncDec.getText().toString().equals("") ||
                     (!radioButtonEnc.isChecked() && !radioButtonDec.isChecked())){
                 Toast.makeText(this, "Есть незаполненые поля", Toast.LENGTH_SHORT).show();
             }else{
@@ -51,12 +47,12 @@ public class AffineActivity extends AppCompatActivity {
                 }else{
                     action = "decrypt";
                 }
-                String context = editTextAffineKey1.getText().toString() + "@" + editTextAffineKey2.getText().toString();
-                requestToServer(action, editTextAffineForEncDec.getText().toString(), cryptName, context);
+                String context = "empty";
+                requestToServer(action, editTextRoutEncDec.getText().toString(), cryptName, context);
             }
         });
     }
-    
+
     private void requestToServer(String action, String string, String cryptName, String context) {
         String url = "http://10.0.2.2:8080/crypto";
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -70,12 +66,12 @@ public class AffineActivity extends AppCompatActivity {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                 url, new JSONObject(params), response -> {
             try {
-                EditText editTextAffineResult = findViewById(R.id.editTextAffineResult);
-                editTextAffineResult.setText(response.getString("result"));
+                EditText editTextRoutResult = findViewById(R.id.editTextRoutResult);
+                editTextRoutResult.setText(response.getString("result"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }, error -> Toast.makeText(AffineActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
+        }, error -> Toast.makeText(RoutActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
             @Override
             public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
