@@ -14,7 +14,11 @@ import com.example.crypto.CryptActivities.AffineActivity;
 import com.example.crypto.CryptActivities.CaesarActivity;
 import com.example.crypto.CryptActivities.CaesarKeyWordActivity;
 import com.example.crypto.CryptActivities.DoublePermutationActivity;
+import com.example.crypto.CryptActivities.GronsfeldActivity;
+import com.example.crypto.CryptActivities.HillActivity;
 import com.example.crypto.CryptActivities.MagicSquareActivity;
+import com.example.crypto.CryptActivities.PlayfairActivity;
+import com.example.crypto.CryptActivities.RichelieuActivity;
 import com.example.crypto.CryptActivities.SinglePermutationKey;
 import com.example.crypto.CryptActivities.TrithemiusActivity;
 import com.example.crypto.CryptActivities.VigenereActivity;
@@ -80,16 +84,27 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intentVigenere);
                     break;
                 case "Шифр Гронсфельда":
+                    Intent intentGronsfeld = new Intent(MainActivity.this, GronsfeldActivity.class);
+                    intentGronsfeld.putExtra("cryptName", "gronsfeld");
+                    startActivity(intentGronsfeld);
                     break;
                 case "Шифр Плейфера":
+                    Intent intentPlayfair = new Intent(MainActivity.this, PlayfairActivity.class);
+                    intentPlayfair.putExtra("cryptName", "playfair");
+                    startActivity(intentPlayfair);
                     break;
                 case "Шифр Хилла":
+                    Intent intentHill = new Intent(MainActivity.this, HillActivity.class);
+                    intentHill.putExtra("cryptName", "hill");
+                    startActivity(intentHill);
                     break;
                 case "Маршрутный шифр":
                     break;
                 case "Поворотная решетка Кардано":
-                    break;
-                case "Шифр Решелье":
+                case "Шифр Ришелье":
+                    Intent intentGrill = new Intent(MainActivity.this, RichelieuActivity.class);
+                    intentGrill.putExtra("cryptName", "richelieu");
+                    startActivity(intentGrill);
                     break;
                 case "Шифр Фейстеля":
                     break;

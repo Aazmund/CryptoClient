@@ -20,28 +20,25 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CaesarKeyWordActivity extends AppCompatActivity {
+public class RichelieuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_caesar_key_word);
+        setContentView(R.layout.activity_richelieu);
 
         Bundle bundle = getIntent().getExtras();
         String cryptName = bundle.getString("cryptName");
 
-        Button btnGetResult = findViewById(R.id.btnCaesarKeyWordGetResult);
+        Button btnGetResult = findViewById(R.id.btnRichelieuGetResult);
 
-        EditText editTextCaesarKeyWordForEncDec = findViewById(R.id.editTextCaesarKeyWordForEncDec);
-        EditText editTextCaesarKeyWordKey1 = findViewById(R.id.editTextCaesarKeyWordKey1);
-        EditText editTextCaesarKeyWordKey2 = findViewById(R.id.editTextCaesarKeyWordKey2);
+        EditText editTextRichelieuEncDec = findViewById(R.id.editTextRichelieuForEncDec);
 
-        RadioButton radioButtonEnc = findViewById(R.id.radioButtonEnc);
-        RadioButton radioButtonDec = findViewById(R.id.radioButtonDec);
+        RadioButton radioButtonEnc = findViewById(R.id.radioButtonRichelieuEnc);
+        RadioButton radioButtonDec = findViewById(R.id.radioButtonRichelieuDec);
 
         btnGetResult.setOnClickListener(view -> {
-            if (editTextCaesarKeyWordForEncDec.getText().toString().equals("") ||
-                    editTextCaesarKeyWordKey1.getText().toString().equals("") || editTextCaesarKeyWordKey2.getText().toString().equals("") ||
+            if (editTextRichelieuEncDec.getText().toString().equals("") ||
                     (!radioButtonEnc.isChecked() && !radioButtonDec.isChecked())){
                 Toast.makeText(this, "Есть незаполненые поля", Toast.LENGTH_SHORT).show();
             }else{
@@ -51,8 +48,8 @@ public class CaesarKeyWordActivity extends AppCompatActivity {
                 }else{
                     action = "decrypt";
                 }
-                String context = editTextCaesarKeyWordKey2.getText().toString() + "@" + editTextCaesarKeyWordKey1.getText().toString();
-                requestToServer(action, editTextCaesarKeyWordForEncDec.getText().toString(), cryptName, context);
+                String context = "empty";
+                requestToServer(action, editTextRichelieuEncDec.getText().toString(), cryptName, context);
             }
         });
     }
@@ -70,12 +67,12 @@ public class CaesarKeyWordActivity extends AppCompatActivity {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                 url, new JSONObject(params), response -> {
             try {
-                EditText editTextCaesarKeyWordResult = findViewById(R.id.editTextCaesarKeyWordResult);
-                editTextCaesarKeyWordResult.setText(response.getString("result"));
+                EditText editTextRichelieuResult = findViewById(R.id.editTextRichelieuResult);
+                editTextRichelieuResult.setText(response.getString("result"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }, error -> Toast.makeText(CaesarKeyWordActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
+        }, error -> Toast.makeText(RichelieuActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
             @Override
             public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();

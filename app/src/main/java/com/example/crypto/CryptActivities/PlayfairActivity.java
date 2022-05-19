@@ -1,5 +1,10 @@
 package com.example.crypto.CryptActivities;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.crypto.R;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,40 +13,33 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.crypto.R;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class CaesarKeyWordActivity extends AppCompatActivity {
+public class PlayfairActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_caesar_key_word);
+        setContentView(R.layout.activity_playfair);
 
         Bundle bundle = getIntent().getExtras();
         String cryptName = bundle.getString("cryptName");
 
-        Button btnGetResult = findViewById(R.id.btnCaesarKeyWordGetResult);
+        Button btnGetResult = findViewById(R.id.btnPlayfairGetResult);
 
-        EditText editTextCaesarKeyWordForEncDec = findViewById(R.id.editTextCaesarKeyWordForEncDec);
-        EditText editTextCaesarKeyWordKey1 = findViewById(R.id.editTextCaesarKeyWordKey1);
-        EditText editTextCaesarKeyWordKey2 = findViewById(R.id.editTextCaesarKeyWordKey2);
+        EditText editTextPlayfairEncDec = findViewById(R.id.editTextPlayfairForEncDec);
+        EditText editPlayfairKey = findViewById(R.id.editTextPlayfairKey);
 
-        RadioButton radioButtonEnc = findViewById(R.id.radioButtonEnc);
-        RadioButton radioButtonDec = findViewById(R.id.radioButtonDec);
+        RadioButton radioButtonEnc = findViewById(R.id.radioButtonPlayfairEnc);
+        RadioButton radioButtonDec = findViewById(R.id.radioButtonPlayfairDec);
 
         btnGetResult.setOnClickListener(view -> {
-            if (editTextCaesarKeyWordForEncDec.getText().toString().equals("") ||
-                    editTextCaesarKeyWordKey1.getText().toString().equals("") || editTextCaesarKeyWordKey2.getText().toString().equals("") ||
+            if (editTextPlayfairEncDec.getText().toString().equals("") ||
+                    editPlayfairKey.getText().toString().equals("") ||
                     (!radioButtonEnc.isChecked() && !radioButtonDec.isChecked())){
                 Toast.makeText(this, "Есть незаполненые поля", Toast.LENGTH_SHORT).show();
             }else{
@@ -51,8 +49,8 @@ public class CaesarKeyWordActivity extends AppCompatActivity {
                 }else{
                     action = "decrypt";
                 }
-                String context = editTextCaesarKeyWordKey2.getText().toString() + "@" + editTextCaesarKeyWordKey1.getText().toString();
-                requestToServer(action, editTextCaesarKeyWordForEncDec.getText().toString(), cryptName, context);
+                String context = editPlayfairKey.getText().toString();
+                requestToServer(action, editTextPlayfairEncDec.getText().toString(), cryptName, context);
             }
         });
     }
@@ -70,12 +68,12 @@ public class CaesarKeyWordActivity extends AppCompatActivity {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                 url, new JSONObject(params), response -> {
             try {
-                EditText editTextCaesarKeyWordResult = findViewById(R.id.editTextCaesarKeyWordResult);
-                editTextCaesarKeyWordResult.setText(response.getString("result"));
+                EditText editTextPlayfairResult = findViewById(R.id.editTextPlayfairResult);
+                editTextPlayfairResult.setText(response.getString("result"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }, error -> Toast.makeText(CaesarKeyWordActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
+        }, error -> Toast.makeText(PlayfairActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
             @Override
             public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
@@ -96,4 +94,5 @@ public class CaesarKeyWordActivity extends AppCompatActivity {
         };
         queue.add(jsonObjectRequest);
     }
+
 }

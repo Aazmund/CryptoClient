@@ -15,6 +15,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".CryptActivities.RichelieuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CryptActivities.HillActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CryptActivities.PlayfairActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CryptActivities.GronsfeldActivity"
+            android:exported="false" />
+        <activity
             android:name=".CryptActivities.MagicSquareActivity"
             android:exported="false" />
         <activity
