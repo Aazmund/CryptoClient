@@ -1,3 +1,38 @@
 <resources>
     <string name="app_name">Crypto</string>
+
+    <string name="textViewChoice">Выберите шифровку:</string>
+
+    <string name="textViewStringInput">Введите текст</string>
+    <string name="editTextForEncDec">Текст для шифровки/дешифровки</string>
+    <string name="radioButtonEnc">Зашифровать</string>
+    <string name="radioButtonDec">Дешифровать</string>
+    <string name="textViewInputKey">Введите ключ:</string>
+    <string name="editTextInputKey1">Ключ 1</string>
+    <string name="editTextInputKey2">Ключ 2</string>
+    <string name="editTextInputKey3">Ключ 3</string>
+    <string name="textViewResult">Результат</string>
+    <string name="btnGetResult">Получить результат</string>
+
+    <string name="textViewMagicSquare">Магический квадрат</string>
+    <string name="textViewMagicSquareInput">Выберите размер квадрата</string>
+    <string name="radioButtonThree">3</string>
+    <string name="radioButtonFive">5</string>
+    <string name="radioButtonSeven">7</string>
+    <string name="textViewMagicSquareResult">Сгенерированный квадрат</string>
+
+    <string name="textViewAffine">Аффинный шифр</string>
+    <string name="textViewAuthorial">Кастомный шифр</string>
+    <string name="textViewCaesar">Шифр Цезаря</string>
+    <string name="textViewCaesarKeyWord">Сиситема Цезаря с ключевым словом</string>
+    <string name="textViewCardanGrille">Решетка Кардано</string>
+    <string name="textViewDoublePer">Шифр двойной перестановки</string>
+    <string name="textViewGronsfeld">Шифр Гронсфельда</string>
+    <string name="textViewHill">Шифр Хилла</string>
+    <string name="textViewPlayfair">Шифр Плейфера</string>
+    <string name="textViewRichelieu">Шифр Ришелье</string>
+    <string name="textViewRout">Маршрутный шифр</string>
+    <string name="textViewSinPer">Одиночная перестановка по ключу</string>
+    <string name="textViewTrithemius">Шифр Тритемиуса</string>
+    <string name="textViewVigenere">Шифр Виженера</string>
 </resources>

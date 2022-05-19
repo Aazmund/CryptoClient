@@ -14,7 +14,7 @@
         android:id="@+id/textViewAffine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Аффинный шифр"
+        android:text="@string/textViewAffine"
         android:gravity="center"
         android:textSize="20sp" />
 
@@ -23,10 +23,10 @@
         android:layout_height="25dp" />
 
     <TextView
-        android:id="@+id/textViewAffineInput"
+        android:id="@+id/textViewStringInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Введите текст"
+        android:text="@string/textViewStringInput"
         android:textSize="20sp" />
 
     <EditText
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Текст для шифровки/дешифровки"
+        android:hint="@string/editTextForEncDec"
         android:inputType="textMultiLine"
         android:minHeight="48dp" />
 
@@ -50,10 +50,10 @@
             android:layout_weight="1" />
 
         <RadioButton
-            android:id="@+id/radioButtonEnc"
+            android:id="@+id/radioButtonAffineEnc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Зашифровать" />
+            android:text="@string/radioButtonEnc" />
 
         <Space
             android:layout_width="wrap_content"
@@ -61,10 +61,10 @@
             android:layout_weight="1" />
 
         <RadioButton
-            android:id="@+id/radioButtonDec"
+            android:id="@+id/radioButtonAffineDec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Дешифровать" />
+            android:text="@string/radioButtonDec" />
 
         <Space
             android:layout_width="wrap_content"
@@ -77,7 +77,7 @@
         android:id="@+id/textViewAffineKey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Введите ключ:"
+        android:text="@string/textViewInputKey"
         android:textSize="20sp" />
 
     <LinearLayout
@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
-            android:hint="Ключ 1"
+            android:hint="@string/editTextInputKey1"
             android:minHeight="48dp" />
 
         <EditText
@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
-            android:hint="Ключ 2"
+            android:hint="@string/editTextInputKey2"
             android:minHeight="48dp" />
     </LinearLayout>
 
@@ -108,7 +108,7 @@
         android:id="@+id/textViewAffineResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Результат"
+        android:text="@string/textViewResult"
         android:textSize="20sp" />
 
     <EditText
@@ -128,7 +128,7 @@
             android:id="@+id/btnAffineGetResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Получить результат"
+            android:text="@string/btnGetResult"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="0dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>

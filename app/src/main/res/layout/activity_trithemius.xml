@@ -14,7 +14,7 @@
         android:id="@+id/textViewTrithemius"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Шифр Тритемиуса"
+        android:text="@string/textViewTrithemius"
         android:gravity="center"
         android:textSize="20sp" />
 
@@ -26,7 +26,7 @@
         android:id="@+id/textViewTrithemiusInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Введите текст"
+        android:text="@string/textViewStringInput"
         android:textSize="20sp" />
 
     <EditText
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Текст для шифровки/дешифровки"
+        android:hint="@string/editTextForEncDec"
         android:inputType="textMultiLine"
         android:minHeight="48dp" />
 
@@ -50,10 +50,10 @@
             android:layout_weight="1" />
 
         <RadioButton
-            android:id="@+id/radioButtonEnc"
+            android:id="@+id/radioButtonTrithemiusEnc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Зашифровать" />
+            android:text="@string/radioButtonEnc" />
 
         <Space
             android:layout_width="wrap_content"
@@ -61,10 +61,10 @@
             android:layout_weight="1" />
 
         <RadioButton
-            android:id="@+id/radioButtonDec"
+            android:id="@+id/radioButtonTrithemiusDec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Дешифровать" />
+            android:text="@string/radioButtonDec" />
 
         <Space
             android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Ключ 1"
+            android:hint="@string/editTextInputKey1"
             android:inputType="number" />
 
         <EditText
@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Ключ 2"
+            android:hint="@string/editTextInputKey2"
             android:inputType="number" />
 
         <EditText
@@ -103,7 +103,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Ключ 3"
+            android:hint="@string/editTextInputKey3"
             android:inputType="number" />
     </LinearLayout>
 
@@ -111,7 +111,7 @@
         android:id="@+id/textViewTrithemiusResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Результат"
+        android:text="@string/textViewResult"
         android:textSize="20sp" />
 
     <EditText
@@ -131,7 +131,7 @@
             android:id="@+id/btnTrithemiusGetResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Получить результат"
+            android:text="@string/btnGetResult"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="0dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>

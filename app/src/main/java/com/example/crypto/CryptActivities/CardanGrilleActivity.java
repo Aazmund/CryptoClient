@@ -26,15 +26,10 @@ public class CardanGrilleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cardan_grille);
-
         Bundle bundle = getIntent().getExtras();
         String cryptName = bundle.getString("cryptName");
-
-
         Button btnGetResult = findViewById(R.id.btnCardanGrilleGetResult);
-
         EditText editTextCardanGrilleEncDec = findViewById(R.id.editTextCardanGrilleForEncDec);
-
         RadioButton radioButtonEnc = findViewById(R.id.radioButtonCardanGrilleEnc);
         RadioButton radioButtonDec = findViewById(R.id.radioButtonCardanGrilleDec);
 
@@ -50,7 +45,6 @@ public class CardanGrilleActivity extends AppCompatActivity {
                     action = "decrypt";
                 }
                 String context = "empty";
-                System.out.println(action + "  " + editTextCardanGrilleEncDec.getText().toString() + "  " + cryptName + "  " + context);
                 requestToServer(action, editTextCardanGrilleEncDec.getText().toString(), cryptName, context);
             }
         });
@@ -83,7 +77,6 @@ public class CardanGrilleActivity extends AppCompatActivity {
                 params.put("cryptName", cryptName);
                 params.put("context", context);
                 params.put("result", "");
-
                 return params;
             }
             @Override

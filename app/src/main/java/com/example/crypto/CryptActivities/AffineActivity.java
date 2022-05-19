@@ -1,22 +1,18 @@
 package com.example.crypto.CryptActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.crypto.R;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,8 +32,8 @@ public class AffineActivity extends AppCompatActivity {
         EditText editTextAffineKey1 = findViewById(R.id.editTextAffineKey1);
         EditText editTextAffineKey2 = findViewById(R.id.editTextAffineKey2);
 
-        RadioButton radioButtonEnc = findViewById(R.id.radioButtonEnc);
-        RadioButton radioButtonDec = findViewById(R.id.radioButtonDec);
+        RadioButton radioButtonEnc = findViewById(R.id.radioButtonAffineEnc);
+        RadioButton radioButtonDec = findViewById(R.id.radioButtonAffineDec);
 
         btnGetResult.setOnClickListener(view -> {
             if (editTextAffineForEncDec.getText().toString().equals("") ||

@@ -35,8 +35,8 @@ public class TrithemiusActivity extends AppCompatActivity {
 
         EditText editTextTrithemiusForEncDec = findViewById(R.id.editTextTrithemiusForEncDec);
 
-        RadioButton radioButtonEnc = findViewById(R.id.radioButtonEnc);
-        RadioButton radioButtonDec = findViewById(R.id.radioButtonDec);
+        RadioButton radioButtonEnc = findViewById(R.id.radioButtonTrithemiusEnc);
+        RadioButton radioButtonDec = findViewById(R.id.radioButtonTrithemiusDec);
 
         EditText editTextTrithemiusKey1 = findViewById(R.id.editTextTrithemiusKey1);
         EditText editTextTrithemiusKey2 = findViewById(R.id.editTextTrithemiusKey2);

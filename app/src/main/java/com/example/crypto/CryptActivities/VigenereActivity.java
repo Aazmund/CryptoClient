@@ -36,8 +36,8 @@ public class VigenereActivity extends AppCompatActivity {
         EditText editTextVigenereForEncDec = findViewById(R.id.editTextVigenereForEncDec);
         EditText editTextVigenereKey = findViewById(R.id.editTextVigenereKey);
 
-        RadioButton radioButtonEnc = findViewById(R.id.radioButtonEnc);
-        RadioButton radioButtonDec = findViewById(R.id.radioButtonDec);
+        RadioButton radioButtonEnc = findViewById(R.id.radioButtonVigenereEnc);
+        RadioButton radioButtonDec = findViewById(R.id.radioButtonVigenereDec);
 
         btnGetResult.setOnClickListener(view -> {
             if (editTextVigenereForEncDec.getText().toString().equals("") ||

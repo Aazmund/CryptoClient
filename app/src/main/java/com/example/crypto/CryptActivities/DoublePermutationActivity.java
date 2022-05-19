@@ -37,8 +37,8 @@ public class DoublePermutationActivity extends AppCompatActivity {
         EditText editTextDoublePerKey1 = findViewById(R.id.editTextDoublePerKey1);
         EditText editTextDoublePerKey2 = findViewById(R.id.editTextDoublePerKey2);
 
-        RadioButton radioButtonEnc = findViewById(R.id.radioButtonEnc);
-        RadioButton radioButtonDec = findViewById(R.id.radioButtonDec);
+        RadioButton radioButtonEnc = findViewById(R.id.radioButtonDoublePerEnc);
+        RadioButton radioButtonDec = findViewById(R.id.radioButtonDoublePerDec);
 
         btnGetResult.setOnClickListener(view -> {
             if (editTextDoublePerForEncDec.getText().toString().equals("") ||
